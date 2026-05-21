@@ -52,3 +52,13 @@ streamlit run app.py
 - `edits.py` — Three-option edit generation, JSON schema, apply with fuzzy match
 - `prompts.py` — System prompts
 - `cache/` — Cached parsed + tagged filings (skip re-ingest)
+
+## Visuals
+
+<img width="2194" height="993" alt="Screenshot 2026-05-21 112256" src="https://github.com/user-attachments/assets/eacb85e3-df2a-44c5-8a31-09f9e1774f70" />
+<img width="2195" height="1202" alt="Screenshot 2026-05-21 112406" src="https://github.com/user-attachments/assets/b027498e-1134-4d06-90bb-6c6a24b3731e" />
+<img width="2123" height="1217" alt="image" src="https://github.com/user-attachments/assets/7164318d-a11c-4a3c-b6cd-b475b9a3760e" />
+<img width="2150" height="1176" alt="image" src="https://github.com/user-attachments/assets/8b57a0ff-beaf-45f9-90f8-dfa32f7ed432" />
+
+
+
