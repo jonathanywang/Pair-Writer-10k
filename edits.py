@@ -248,40 +248,54 @@ def _parse_edit_proposal(content: str, scope: str, memo: Memo) -> EditProposal:
     )
 
 
-def apply_edit(memo: Memo, proposal: EditProposal, chosen_option: EditOption) -> tuple[bool, str]:
-    """Apply a chosen option to the memo.
-
-    Returns (success, changed_paragraph_id).
-    The changed_paragraph_id is the pid of the paragraph that was created or modified.
+def apply_edit(memo: Memo, proposal: EditProposal, option: EditOption):
     """
-    anchor = proposal.anchor
+    Apply a selected edit option to the memo.
+
+    Returns:
+        (success: bool, changed_pid: str | None)
+    """
+
     op = proposal.op
+    anchor = _resolve_anchor(memo, proposal.anchor)
 
-    # Resolve anchor — try exact match first, then fuzzy
-    target_pid = _resolve_anchor(memo, anchor)
+    # ----------------------------------------
+    # REPLACE
+    # ----------------------------------------
+    if op == "replace":
 
-    if op == "insert_after":
-        if anchor == "end_of_memo" or target_pid is None:
-            new_pid = memo.add_paragraph(chosen_option.new_text)
-        else:
-            new_pid = memo.add_paragraph(chosen_option.new_text, after_pid=target_pid)
+        if not anchor:
+            return False, None
+
+        success = memo.replace_paragraph(anchor, option.new_text)
+
+        return success, anchor if success else None
+
+    # ----------------------------------------
+    # INSERT AFTER
+    # ----------------------------------------
+    elif op == "insert_after":
+
+        new_pid = memo.add_paragraph(
+            option.new_text,
+            after_pid=anchor,
+        )
+
         return True, new_pid
 
-    if op == "replace":
-        if target_pid is None:
-            # Fall back to appending
-            new_pid = memo.add_paragraph(chosen_option.new_text)
-            return True, new_pid
-        memo.replace_paragraph(target_pid, chosen_option.new_text)
-        return True, target_pid
+    # ----------------------------------------
+    # DELETE
+    # ----------------------------------------
+    elif op == "delete":
 
-    if op == "delete":
-        if target_pid is None:
-            return False, ""
-        memo.delete_paragraph(target_pid)
-        return True, target_pid
+        if not anchor:
+            return False, None
 
-    return False, ""
+        success = memo.delete_paragraph(anchor)
+
+        return success, anchor if success else None
+
+    return False, None
 
 
 def _resolve_anchor(memo: Memo, anchor: str) -> Optional[str]:
