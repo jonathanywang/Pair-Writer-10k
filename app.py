@@ -810,7 +810,7 @@ with col_memo:
             if st.button("Try 3 more", use_container_width=True):
                 st.session_state.rejected_options = list(proposal.options)
                 with st.spinner("Generating 3 more options..."):
-                    scope = st.session_state.selected_pid or "whole_memo"
+                    scope = st.session_state.selected_pid
                     new_prop = generate_three_options(
                         client=client,
                         memo=memo,
@@ -942,7 +942,7 @@ with col_command:
 
             with st.spinner("Generating options..."):
 
-                scope = st.session_state.selected_pid or "whole_memo"
+                scope = st.session_state.selected_pid
 
                 proposal = generate_three_options(
                     client=client,
