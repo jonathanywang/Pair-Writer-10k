@@ -365,5 +365,9 @@ Advantages:
 <img width="2123" height="1217" alt="image" src="https://github.com/user-attachments/assets/7164318d-a11c-4a3c-b6cd-b475b9a3760e" />
 <img width="2150" height="1176" alt="image" src="https://github.com/user-attachments/assets/8b57a0ff-beaf-45f9-90f8-dfa32f7ed432" />
 
+## Demo
+[streamlit-app-2026-05-21-20-13-35.webm](https://github.com/user-attachments/assets/961b03ad-14a0-48bc-840d-ef9019c78bee)
+
+
 
 
