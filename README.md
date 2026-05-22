@@ -368,6 +368,10 @@ Advantages:
 ## Demo
 [streamlit-app-2026-05-21-20-13-35.webm](https://github.com/user-attachments/assets/961b03ad-14a0-48bc-840d-ef9019c78bee)
 
+## Pitch Deck
+[10-K-Pair-Writer.pptx](https://github.com/user-attachments/files/28126403/10-K-Pair-Writer.pptx)
+
+
 
 
 
